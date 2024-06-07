@@ -4,6 +4,7 @@ import sys
 from prescan.batch_loader import BatchLoader
 from prescan.deduper import Deduper
 from prescan.doc_reader import DocReader
+from prescan.scanner import Scanner
 
 
 def main():
@@ -11,17 +12,7 @@ def main():
     logging.basicConfig(
         format="%(levelname)s: %(message)s", encoding="utf-8", level=log_level
     )
-    logger = logging.getLogger(__name__)
-
-    try:
-        logger.info("Starting")
-        loader = BatchLoader(input_dir)
-
-        deduper = Deduper(loader.batches)
-        uniques = deduper.get_unique_docs()
-
-    except Exception as e:
-        print(e)
+    Scanner.process_documents(input_dir)
 
 
 def get_input_args() -> tuple[str, int]:
