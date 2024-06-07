@@ -1,6 +1,5 @@
 import logging
 import os
-
 from prescan.document_batch import DocumentBatch
 
 

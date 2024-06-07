@@ -34,13 +34,13 @@ def test_filter_all_duplicates_returns_unique_docs(batch_1):
 
     assert len(batch_2.uniques) == 5
 
-    batch_2.filter_all_duplicates_in([batch_1])
+    filtered_batch = batch_2.filter_all_duplicates_in([batch_1])
 
-    assert len(batch_2.uniques) == 3
+    assert len(filtered_batch.uniques) == 3
 
 
 def test_dups_returns_duplicate_count(batch_1):
-    batch_1.uniques = {'MEDHIS.PDF'}
+    batch_1.uniques = {"MEDHIS.PDF"}
 
     assert len(batch_1.faxes) == 3
     assert len(batch_1.uniques) == 1

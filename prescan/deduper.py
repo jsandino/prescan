@@ -1,8 +1,5 @@
-import filecmp
 import logging
-import os
 from prescan.document_batch import DocumentBatch
-from collections import defaultdict
 
 
 class Deduper:
@@ -14,17 +11,17 @@ class Deduper:
         self.batches = batches
         self.logger = logging.getLogger(__name__)
 
-    def get_unique_docs(self) -> dict[str : set[str]]:
-        unique_docs = {}
+    def get_unique_docs(self) -> list[DocumentBatch]:
+        unique_docs = []
         processed_batches = []
         for batch in self.batches:
             self.logger.info(f"==========================")
             self.logger.info(f"Processing batch: {batch.name}")
             self.logger.info(f"==========================")
-            batch.filter_all_duplicates_in(processed_batches)
-            processed_batches.append(batch)
-            unique_docs[batch.name] = batch.uniques
-            self.logger.info(batch.counts())
+            filtered_batch = batch.filter_all_duplicates_in(processed_batches)
+            unique_docs.append(filtered_batch)
+            self.logger.info(filtered_batch.counts())
             self.logger.info("")
+            processed_batches.append(batch)
 
         return unique_docs

@@ -1,9 +1,5 @@
 import logging
 import sys
-
-from prescan.batch_loader import BatchLoader
-from prescan.deduper import Deduper
-from prescan.doc_reader import DocReader
 from prescan.scanner import Scanner
 
 

@@ -1,3 +1,4 @@
+import copy
 import filecmp
 import logging
 import os
@@ -15,6 +16,9 @@ class DocumentBatch:
         self.faxes = set(os.listdir(docpath))
         self.uniques = set(self.faxes)
 
+    def copy(self):
+        return copy.copy(self)
+
     def file_path(self, file_name):
         return os.path.join(self.path, file_name)
 
@@ -27,15 +31,29 @@ class DocumentBatch:
     def __len__(self):
         return len(self.faxes)
 
-    def filter_all_duplicates_in(self, batches: list["DocumentBatch"]):
+    def filter_all_duplicates_in(
+        self, batches: list["DocumentBatch"]
+    ) -> "DocumentBatch":
+        """
+        Filters out documents in this batch that are also present in any of the supplied input batches.
+        The resulting DocumentBatch is a copy of this batch minus the duplicate documents.
+        """
+
+        new_batch = self.copy()
+
         if not batches:
-            self.uniques.update(self.faxes)
+            new_batch.uniques.update(new_batch.faxes)
 
         for batch in batches:
-            new_docs = self.filter_duplicates_present_in(batch)
-            self.uniques = new_docs
+            new_docs = new_batch.filter_duplicates_present_in(batch)
+            new_batch.uniques = new_docs
+
+        return new_batch
 
     def filter_duplicates_present_in(self, batch: "DocumentBatch"):
+        """
+        Filters out documents in this batch that are also present in the supplied batch.
+        """
         new_docs = self.uniques
         existing_docs = batch.faxes
 
@@ -62,4 +80,7 @@ class DocumentBatch:
         return f"Total: {len(self)}, Uniques: {len(self.uniques)}, Dups: {self.dups()}"
 
     def dups(self) -> int:
+        """
+        Returns a count of duplicate entries
+        """
         return len(self) - len(self.uniques)
