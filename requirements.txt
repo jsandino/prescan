@@ -1,0 +1,6 @@
+pytest
+pdf2image
+poppler-utils
+pillow
+pytesseract
+opencv-python
