@@ -1,14 +1,14 @@
 TEST_DATA_DIR = "tests/data"
 
+BATCH_1 = "faxes-1"
+BATCH_1_DIR = f"{TEST_DATA_DIR}/{BATCH_1}"
+
+BATCH_2 = "faxes-2"
+BATCH_2_DIR = f"{TEST_DATA_DIR}/{BATCH_2}"
+
 BATCHES = {
-    "faxes-1": {"MEDHIS.PDF", "REFILL1.PDF", "ULTRA1.PDF"},
-    "faxes-2": {
-        "REFILL1.PDF",
-        "REFILL2.PDF",
-        "REFILL3.PDF",
-        "ULTRA1.PDF",
-        "ULTRA2.PDF",
-    },
+    BATCH_1: {"MEDHIS.PDF", "REFILL1.PDF", "ULTRA1.PDF"},
+    BATCH_2: {"REFILL1.PDF", "REFILL2.PDF", "REFILL3.PDF", "ULTRA1.PDF", "ULTRA2.PDF"},
 }
 
 BATCH_NAMES = set(BATCHES)
