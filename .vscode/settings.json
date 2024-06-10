@@ -1,5 +1,9 @@
 {
   "python.testing.pytestArgs": [
+    "-v",
+    "--cov=prescan/",
+    "--cov-report=html",
+    "--pdb",    
     "tests"
   ],
   "python.testing.unittestEnabled": false,

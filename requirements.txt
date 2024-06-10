@@ -1,4 +1,5 @@
 pytest
+pytest-cov
 pdf2image
 poppler-utils
 pillow
