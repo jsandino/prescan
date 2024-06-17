@@ -8,15 +8,16 @@ class DocReader:
     Reads a PDF (fax) document, performing OCR to determine whether or not the document is a prescription.
     """
 
-    def __init__(self, path_to_file: str):
+    def __init__(self, path_to_file: str, output_path: str):
         self.file_name = path_to_file
+        self.output_path = output_path
 
     def get_output_file_path(self, batch_name: str, file_name: str):
         """
         Determines the output destination, based on the contents of the document (prescription vs not prescription)
         """
         dir = "presc" if self.is_prescription() else "non-presc"
-        output_dir = os.path.join("outputs", batch_name, dir)
+        output_dir = os.path.join(self.output_path, dir)
         self.ensure_dir_exists(output_dir)
         return os.path.join(output_dir, file_name)
 

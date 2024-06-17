@@ -1,2 +1,2 @@
 #!/bin/zsh
-python -m prescan inputs -d
+python -m prescan inputs outputs -d

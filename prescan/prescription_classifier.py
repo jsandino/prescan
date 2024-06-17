@@ -18,6 +18,6 @@ class PrescriptionClassifier:
             self.logger.debug(f"{batch.name}: {len(batch.uniques)} docs")
             for doc in batch.uniques:
                 source = batch.file_path(doc)
-                docReader = DocReader(source)
+                docReader = DocReader(source, batch.output_dir_path)
                 destination = docReader.get_output_file_path(batch.name, doc)
                 shutil.copy(source, destination)

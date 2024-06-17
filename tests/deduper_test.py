@@ -2,12 +2,23 @@ import pytest
 
 from prescan.deduper import Deduper
 from prescan.document_batch import DocumentBatch
-from tests.test_constants import BATCH_1, BATCH_1_DIR, BATCH_2, BATCH_2_DIR, BATCHES
+from tests.test_constants import (
+    BATCH_1,
+    BATCH_1_DIR,
+    BATCH_1_OUTPUT_DIR,
+    BATCH_2,
+    BATCH_2_DIR,
+    BATCH_2_OUTPUT_DIR,
+    BATCHES,
+)
 
 
 @pytest.fixture
 def deduper():
-    batches = [DocumentBatch(BATCH_1, BATCH_1_DIR), DocumentBatch(BATCH_2, BATCH_2_DIR)]
+    batches = [
+        DocumentBatch(BATCH_1, BATCH_1_DIR, BATCH_1_OUTPUT_DIR),
+        DocumentBatch(BATCH_2, BATCH_2_DIR, BATCH_2_OUTPUT_DIR),
+    ]
     return Deduper(batches=batches)
 
 

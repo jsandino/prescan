@@ -9,11 +9,12 @@ class DocumentBatch:
     Representation of a set of documents e-faxed in a bundle.
     """
 
-    def __init__(self, name, docpath):
+    def __init__(self, name, input_path, output_path):
         self.logger = logging.getLogger(__name__)
         self.name = name
-        self.path = docpath
-        self.faxes = set(os.listdir(docpath))
+        self.path = input_path
+        self.output_path = output_path
+        self.faxes = set(os.listdir(input_path))
         self.uniques = set(self.faxes)
 
     def copy(self):
@@ -21,6 +22,9 @@ class DocumentBatch:
 
     def file_path(self, file_name):
         return os.path.join(self.path, file_name)
+    
+    def output_dir_path(self):
+        return self.output_path
 
     def __repr__(self):
         return self.__str__()

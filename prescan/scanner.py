@@ -10,11 +10,11 @@ class Scanner:
     """
 
     @staticmethod
-    def process_documents(input_dir: str):
+    def process_documents(input_dir: str, output_dir: str):
         logger = logging.getLogger(__name__)
         try:
             logger.info("Starting")
-            loader = BatchLoader(input_dir)
+            loader = BatchLoader(input_dir, output_dir)
 
             deduper = Deduper(loader.batches)
             uniques = deduper.get_unique_docs()
