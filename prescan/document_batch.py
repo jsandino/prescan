@@ -22,9 +22,16 @@ class DocumentBatch:
 
     def file_path(self, file_name):
         return os.path.join(self.path, file_name)
-    
+
+    @property
     def output_dir_path(self):
         return self.output_path
+
+    @property
+    def has_outputs(self) -> bool:
+        return (
+            os.path.exists(self.output_path) and len(os.listdir(self.output_path)) > 0
+        )
 
     def __repr__(self):
         return self.__str__()
