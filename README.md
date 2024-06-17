@@ -3,10 +3,13 @@ A utility program to identify prescription refill forms from a collection of doc
 
 ## Usage
 ```
- python -m prescan <path_to_docs>
+ python -m prescan <path_to_docs> [output_directory]
  ```
 
- where <path_to_docs> points to the directory containing all prescriptions to be filtered.  Documents are expected in PDF format.
+ where:
+ 
+ *  <path_to_docs> points to the directory containing all prescriptions to be filtered.  Documents are expected in PDF format.
+ * [output_directory] optional path to directory where output files will be saved after classifying.
 
  ## Background
  Doctors often receive documents from various locations as "e-faxes" - copies of digitally scanned documents wrapped in a PDF document.  Usually these documents are collected at an office and then delivered to a doctor in batches: one batch is a zip file containing hundreds of documents.  The contents of these documents vary greatly, including test results, letters from other doctors and prescription requests.
