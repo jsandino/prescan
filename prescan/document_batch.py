@@ -14,8 +14,12 @@ class DocumentBatch:
         self.name = name
         self.path = input_path
         self.output_path = output_path
-        self.faxes = set(os.listdir(input_path))
+        self.faxes = self._valid_faxes_in(input_path)
         self.uniques = set(self.faxes)
+
+    def _valid_faxes_in(self, path):
+        valid = [f for f in os.listdir(path) if f.lower().endswith("pdf")]
+        return set(valid)
 
     def copy(self):
         return copy.copy(self)

@@ -8,6 +8,9 @@ from tests.test_constants import (
     BATCH_2,
     BATCH_2_DIR,
     BATCH_2_OUTPUT_DIR,
+    BATCH_3,
+    BATCH_3_DIR,
+    BATCH_3_OUTPUT_DIR,
     BATCHES,
 )
 
@@ -20,6 +23,10 @@ def batch_1():
 @pytest.fixture
 def batch_2():
     return DocumentBatch(BATCH_2, BATCH_2_DIR, BATCH_2_OUTPUT_DIR)
+
+@pytest.fixture
+def batch_3():
+    return DocumentBatch(BATCH_3, BATCH_3_DIR, BATCH_3_OUTPUT_DIR)
 
 
 def test_constructor_sets_name(batch_1):
@@ -40,6 +47,9 @@ def test_constructor_sets_faxes(batch_1):
 
 def test_constructor_inits_uniques_with_faxes(batch_1):
     assert batch_1.uniques == BATCHES[BATCH_1]
+
+def test_constructor_ignores_invalid_faxes(batch_3):
+    assert batch_3.faxes == BATCHES[BATCH_3]
 
 
 def test_file_path_returns_path_to_file(batch_1):

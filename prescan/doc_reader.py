@@ -58,6 +58,6 @@ class DocReader:
                 text = tess.image_to_string(image)
                 pages.append(text)
         except Exception as e:
-            print(str(e))
+            print(f"Failed to extract text from file {self.file_name} :", str(e))
 
         return "\n".join(pages)
