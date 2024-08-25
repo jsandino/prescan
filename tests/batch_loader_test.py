@@ -15,6 +15,6 @@ def test_batch_loader_loads_files():
     loader = BatchLoader(TEST_DATA_DIR, TEST_OUTPUT_DIR)
     assert 3 == len(loader.batches)
     assert BATCH_NAMES == {batch.name for batch in loader.batches}
-    assert BATCHES['faxes-1'] == loader.batches[0].faxes
-    assert BATCHES['faxes-2'] == loader.batches[1].faxes
-    assert BATCHES['faxes-3'] == loader.batches[2].faxes
+    assert BATCHES["faxes-1"] == loader.batches[0].faxes
+    assert BATCHES["faxes-2"] == loader.batches[1].faxes
+    assert BATCHES["faxes-3"] == loader.batches[2].faxes
