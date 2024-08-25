@@ -13,6 +13,9 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: 3.12
+    - name: Install required binaries for OCR
+      run: |
+        sudo apt update && sudo apt-get install -y poppler-utils tesseract-ocr
     - name: Install dependencies
       run: |
         make install
