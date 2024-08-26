@@ -1,3 +1,5 @@
+[![Prescription Scanner Continuous Integration](https://github.com/jsandino/prescan/actions/workflows/main.yml/badge.svg)](https://github.com/jsandino/prescan/actions/workflows/main.yml)
+
 # Prescription Scanner
 A utility program to identify prescription refill forms from a collection of documents.
 
